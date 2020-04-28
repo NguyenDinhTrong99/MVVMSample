@@ -11,7 +11,7 @@ import com.trongdeptrai.mvvmsample.data.db.entities.User
 @Dao
 interface UserDAO {
     @Insert(onConflict =  OnConflictStrategy.REPLACE)
-    fun insert(vararg user: User): Long
+    suspend fun insert(vararg user: User)
 
     @Query("SELECT * FROM user WHERE uid = $CURRENT_USER_ID")
     fun getUser(): LiveData<User>
